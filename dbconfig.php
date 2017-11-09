@@ -3,7 +3,7 @@
 $servername ="imc.kean.edu";
 $username = "seds2017";
 $password = "2017fall";
-$dbname = "seds2017";
+$dbname = "seds2017db";
 
 
 //create connection
@@ -15,4 +15,3 @@ if (!$conn){
 }
 
 ?>
-
