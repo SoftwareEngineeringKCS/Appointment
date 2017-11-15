@@ -1,4 +1,4 @@
-<?php #JORGE ESPADA
+<?php 
 	
 	function createCode($studentid, $btndatetime) {
 		include ('includes/db_config_function.php');
