@@ -286,7 +286,7 @@
 	<form onsubmit="return confirm('Confirm Booking');" action="appointment.php" method="post">	
 		<table style="width: 100%">
 			<tr>
-				<td style="vertical-align: top;">
+				<td style="vertical-align: top; border: 0px;">
 					<div id="appointment_get_info" style="display: block;">
 						<?php 
 
@@ -390,7 +390,7 @@
 						</p>
 					</div>
 				</td>
-				<td style="vertical-align: top; text-align: center;">
+				<td style="vertical-align: top; text-align: center; border: 0px;">
 					<div id="populate_book" style="width: 500px;"></div>
 						<script>
 							function populateBook(sel) {
