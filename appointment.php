@@ -427,11 +427,6 @@
 				</td>
 			</tr>
 		</table>
-		
-		<div id="show_submit" style="display: none;">
-			<p><button type="button" style="background-color:  #f7dc6f ; height: 30px; width: 200px" onclick="goTo()">NEXT >></button></p>
-			<p><input type="submit" name="submit" value="SET-APPOINTMENT" style="background-color: #f7dc6f; height: 30px; width: 200px" /></p>
-		</div>
 	</form>
 </div>
 
