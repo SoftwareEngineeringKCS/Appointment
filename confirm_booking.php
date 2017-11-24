@@ -1,5 +1,19 @@
 <?php #JORGE ESPADA
 	
+	function sendEmail($from, $to, $confirmation) {
+	 $subject = "Appointment Confirmation Code";
+	 $header = "From: " . $from;
+	 $message = "Dear Student,
+	 		 	\nYour appointment confirmation code is " . $confirmation . ". 
+	 		 	\nBest regards,
+	 		 	\nKean Career Services";
+	 if ($from == "") {
+	 	mail($to, $subject, $message);
+	 } else {
+	 	mail($to, $subject, $message, $header);
+	 }
+	}
+
 	function createCode($studentid, $btndatetime) {
 		include ('includes/db_config_function.php');
 		$code = "";
@@ -57,9 +71,6 @@
 	# Update Time Status.
 	$query = sprintf("UPDATE Availability_Times SET free = 0 WHERE id = '%s'", $getTimeId);
 	$result = mysqli_query($conex, $query);
-	# Send confirmation code (bye email).
-
-
 	# Show results.
 	echo "<p>Student ID: " . $getSID . "</p>";
 	echo "<p>Name: " . $getSLN . ", " . $getSFN . "</p>";
@@ -87,7 +98,22 @@
 	} else {
 		echo "<p class='error'>Location: Error!</p>";
 	}
-	echo "<p><h2 style='color: #6CBB3C'>A Confirmation Code was sent to your email!</h2></p>";
+	# Send confirmation code (bye email).
+	$query = sprintf("SELECT email FROM Consultants WHERE id = '%s'", $getCID);
+	$result = mysqli_query($conex, $query);
+	if ($result) {
+		if (mysqli_num_rows($result) > 0) {
+			$row = mysqli_fetch_array($result);
+			sendEmail($row['email'], $getSEM, $getCode);
+			echo "<p><h2 style='color: #6CBB3C'>A Confirmation Code was sent to your email!</h2></p>";
+		} else {
+			sendEmail("", $getSEM, $getCode);
+			echo "<p><h2 style='color: #6CBB3C'>A Confirmation Code was sent to your email!</h2></p>";
+		}
+	} else {
+		echo "<br>Problem trying to send confirmation code.";
+		echo "<br>Contact Administrator!";
+	}
 
 	mysqli_free_result($result);
 	mysqli_close($conex);
