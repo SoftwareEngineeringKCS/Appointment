@@ -32,7 +32,7 @@
 						if ($ro['free'] == TRUE && date_create($set_date . " " . $set_time) <= date_create($system_datetime)) {
 							echo "<button type='button' name='btnbook' value='" . $id_date_time . "' class='btnbook_taken'>" . $set_time . "</button><br>";
 						} else if ($ro['free'] == TRUE && date_create($set_date . " " . $set_time) > date_create($system_datetime)) {
-							echo "<button name='btnbook' value='" . $id_date_time . "' class='btnbook'>" . $set_time . "</button><br>";
+							echo "<button type='submit' name='btnbook' value='" . $id_date_time . "' class='btnbook'>" . $set_time . "</button><br>";
 						} else {
 							echo "<button type='button' name='btnbook' value='" . $id_date_time . "' class='btnbook_taken'>" . $set_time . "</button><br>";
 						}
