@@ -1,17 +1,17 @@
 <?php #JORGE ESPADA
 	
 	function sendEmail($from, $to, $confirmation) {
-	 $subject = "Appointment Confirmation Code";
-	 $header = "From: " . $from;
-	 $message = "Dear Student,
-	 		 	\nYour appointment confirmation code is " . $confirmation . ". 
-	 		 	\nBest regards,
-	 		 	\nKean Career Services";
-	 if ($from == "") {
-	 	mail($to, $subject, $message);
-	 } else {
-	 	mail($to, $subject, $message, $header);
-	 }
+		 $subject = "TESTING - Appointment Confirmation Code";
+		 $header = "From: " . $from;
+		 $message = "Dear Student, #THIS IS ONLY A TEST#
+		 		 	\nYour appointment confirmation code is " . $confirmation . ". 
+		 		 	\nBest regards,
+		 		 	\nKean Career Services";
+		 if ($from == "") {
+		 	mail($to, $subject, $message);
+		 } else {
+		 	mail($to, $subject, $message, $header);
+		 }
 	}
 
 	function createCode($studentid, $btndatetime) {
