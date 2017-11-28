@@ -13,7 +13,7 @@
 		 	mail($to, $subject, $message, $header);
 		 }
 	}
-
+	
 	function createCode($studentid, $btndatetime) {
 		include ('includes/db_config_function.php');
 		$code = "";
@@ -66,7 +66,7 @@
 	$getTimeId = substr($getBTN, 0, $pos);
 	$getDateTime = substr($getBTN, $pos+1);
 	$getCode = createCode($getSID, $getDateTime);
-	$query = sprintf("INSERT INTO Students_Appointment VALUES(NULL, '%s', '%s', '%s', '%s', '%s', '%s', 0, 0, '', 0, '')", $getSID, $getCID, $getLID, $getRID, $getDateTime, $getCode);
+	$query = sprintf("INSERT INTO Students_Appointment VALUES(NULL, '%s', '%s', '%s', '%s', '%s', '%s', 0, 0, '', 0, '', 0, 0)", $getSID, $getCID, $getLID, $getRID, $getDateTime, $getCode);
 	$result = mysqli_query($conex, $query);
 	# Update Time Status.
 	$query = sprintf("UPDATE Availability_Times SET free = 0 WHERE id = '%s'", $getTimeId);
