@@ -1,4 +1,4 @@
-<?php 
+<?php
 	
 	function sendEmail($from, $to, $confirmation) {
 		 $subject = "TESTING - Appointment Confirmation Code";
@@ -80,7 +80,7 @@
 						$getTimeId = substr($_POST['btnbook'], 0, $pos);
 						$getDateTime = substr($_POST['btnbook'], $pos+1);
 						$getCode = createCode($_POST['student_id'], $getDateTime);
-						$query = sprintf("INSERT INTO Students_Appointment VALUES(NULL, '%s', '%s', '%s', '%s', '%s', '%s', 0, 0, '', 0, '')", $_POST['student_id'], $_POST['consultant'], $_POST['location'], $_POST['reason'], $getDateTime, $getCode);
+						$query = sprintf("INSERT INTO Students_Appointment VALUES(NULL, '%s', '%s', '%s', '%s', '%s', '%s', 0, 0, '', 0, '', 0, 0)", $_POST['student_id'], $_POST['consultant'], $_POST['location'], $_POST['reason'], $getDateTime, $getCode);
 						$result = mysqli_query($conex, $query);
 						# Update Time Status.
 						$query = sprintf("UPDATE Availability_Times SET free = 0 WHERE id = '%s'", $getTimeId);
@@ -202,7 +202,7 @@
 										$getTimeId = substr($_POST['btnbook'], 0, $pos);
 										$getDateTime = substr($_POST['btnbook'], $pos+1);
 										$getCode = createCode($_POST['student_id'], $getDateTime);
-										$query = sprintf("INSERT INTO Students_Appointment VALUES(NULL, '%s', '%s', '%s', '%s', '%s', '%s', 0, 0, '', 0, '')", $_POST['student_id'], $_POST['consultant'], $_POST['location'], $_POST['reason'], $getDateTime, $getCode);
+										$query = sprintf("INSERT INTO Students_Appointment VALUES(NULL, '%s', '%s', '%s', '%s', '%s', '%s', 0, 0, '', 0, '', 0, 0)", $_POST['student_id'], $_POST['consultant'], $_POST['location'], $_POST['reason'], $getDateTime, $getCode);
 										$result = mysqli_query($conex, $query);
 										# Update Time Status.
 										$query = sprintf("UPDATE Availability_Times SET free = 0 WHERE id = '%s'", $getTimeId);
@@ -430,38 +430,38 @@
 				</td>
 				<td style="vertical-align: top; text-align: center; border: 0px;">
 					<div id="populate_book" style="width: 500px;"></div>
-						<script>
-							function populateBook(sel) {
-								var getConsultantId = sel.value;
-							    var htm = $.ajax({
-							    type: "POST",
-							    url: "populate_book.php",
-							    data: "bookConsultantId=" + getConsultantId,
-							    async: false
-							    }).responseText;
+					<script>
+						function populateBook(sel) {
+							var getConsultantId = sel.value;
+						    var htm = $.ajax({
+						    type: "POST",
+						    url: "populate_book.php",
+						    data: "bookConsultantId=" + getConsultantId,
+						    async: false
+						    }).responseText;
 
-							    if (htm) {
-							        $("#populate_book").html("<p>" + htm + "</p>");
-							        return true;
-							    } else {
-							        $("#populate_book").html("<p class='error'>Problem trying to get Consultant Availability Book!</p>");
-							        return false;
-							    }
-							}
-						</script>
-						<script type="text/javascript">
-							function goBack() {
-							    var x = document.getElementById("appointment_process");
-							    var y = document.getElementById("appointment_result");
-							    if (x.style.display === "block" && y.style.display === "none") {
-							    	x.style.display = "none";
-								    y.style.display = "block";
-							    } else if (x.style.display === "none" && y.style.display === "block") {
-							    	x.style.display = "block";
-								    y.style.display = "none";
-							    }
-							}
-						</script>
+						    if (htm) {
+						        $("#populate_book").html("<p>" + htm + "</p>");
+						        return true;
+						    } else {
+						        $("#populate_book").html("<p class='error'>Problem trying to get Consultant Availability Book!</p>");
+						        return false;
+						    }
+						}
+					</script>
+					<script type="text/javascript">
+						function goBack() {
+						    var x = document.getElementById("appointment_process");
+						    var y = document.getElementById("appointment_result");
+						    if (x.style.display === "block" && y.style.display === "none") {
+						    	x.style.display = "none";
+							    y.style.display = "block";
+						    } else if (x.style.display === "none" && y.style.display === "block") {
+						    	x.style.display = "block";
+							    y.style.display = "none";
+						    }
+						}
+					</script>
 				</td>
 			</tr>
 		</table>
