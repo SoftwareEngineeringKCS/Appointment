@@ -321,7 +321,7 @@
 <div id="appointment_process"<?php if (isset($_POST['student_id'])) echo ' style="display: none;"'; ?>>
 	<h1>Appointment Process</h1>
 	<h2>* Required Fields | Select consultant and book a time of any date!</h2>
-	<form onsubmit="return confirm('Confirm Booking');" action="appointment.php" method="post">	
+	<form action="appointment.php" method="post">	
 		<table style="width: 100%">
 			<tr>
 				<td style="vertical-align: top; border: 0px;">
