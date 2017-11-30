@@ -1,4 +1,4 @@
-<?php #JORGE ESPADA
+<?php 
 	
 	function sendEmail($from, $to, $confirmation) {
 		 $subject = "TESTING - Appointment Confirmation Code";
@@ -8,9 +8,9 @@
 		 		 	\nBest regards,
 		 		 	\nKean Career Services";
 		 if ($from == "") {
-		 	mail($to, $subject, $message);
+		 	return mail($to, $subject, $message);
 		 } else {
-		 	mail($to, $subject, $message, $header);
+		 	return mail($to, $subject, $message, $header);
 		 }
 	}
 	
@@ -66,7 +66,7 @@
 	$getTimeId = substr($getBTN, 0, $pos);
 	$getDateTime = substr($getBTN, $pos+1);
 	$getCode = createCode($getSID, $getDateTime);
-	$query = sprintf("INSERT INTO Students_Appointment VALUES(NULL, '%s', '%s', '%s', '%s', '%s', '%s', 0, 0, '', 0, '', 0, 0)", $getSID, $getCID, $getLID, $getRID, $getDateTime, $getCode);
+	$query = sprintf("INSERT INTO Students_Appointment VALUES(NULL, '%s', '%s', '%s', '%s', '%s', '%s', 0, 0, '', 0, '')", $getSID, $getCID, $getLID, $getRID, $getDateTime, $getCode);
 	$result = mysqli_query($conex, $query);
 	# Update Time Status.
 	$query = sprintf("UPDATE Availability_Times SET free = 0 WHERE id = '%s'", $getTimeId);
@@ -104,11 +104,17 @@
 	if ($result) {
 		if (mysqli_num_rows($result) > 0) {
 			$row = mysqli_fetch_array($result);
-			sendEmail($row['email'], $getSEM, $getCode);
-			echo "<p><h2 style='color: #6CBB3C'>A Confirmation Code was sent to your email!</h2></p>";
+			if (sendEmail($row['email'], $getSEM, $getCode)) {
+				echo "<p><h2 style='color: #6CBB3C'>A Confirmation Code was sent to your email!</h2></p>";
+			} else {
+				echo "<br><font size='2' color=red>Sending Confirmation Code to Student's email... Failed! [Email Server]</font>";
+			}
 		} else {
-			sendEmail("", $getSEM, $getCode);
-			echo "<p><h2 style='color: #6CBB3C'>A Confirmation Code was sent to your email!</h2></p>";
+			if (sendEmail("", $getSEM, $getCode)) {
+				echo "<p><h2 style='color: #6CBB3C'>A Confirmation Code was sent to your email!</h2></p>";
+			} else {
+				echo "<br><font size='2' color=red>Sending Confirmation Code to Student's email... Failed! [Email Server]</font>";
+			}
 		}
 	} else {
 		echo "<br>Problem trying to send confirmation code.";
