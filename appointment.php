@@ -336,8 +336,8 @@
 	<form action="appointment.php" method="post">	
 		<table style="width: 100%">
 			<tr>
-				<td style="vertical-align: top; border: 0px;">
-					<div id="appointment_get_info" style="display: block;">
+				<td style="vertical-align: top; border: 0px; width: 25%;">
+					<div id="appointment_get_info" style="display: block; width: 100%">
 						<?php 
 
 							include ('includes/db_config.php'); 
@@ -440,8 +440,8 @@
 						</p>
 					</div>
 				</td>
-				<td style="vertical-align: top; text-align: center; border: 0px;">
-					<div id="populate_book" style="width: 500px;"></div>
+				<td style="vertical-align: top; text-align: left; padding: 0 0 0 20px; border: 0px; width: 75%;">
+					<div id="populate_book" style="width: 100%;"></div>
 					<script>
 						function populateBook(sel) {
 							var getConsultantId = sel.value;
