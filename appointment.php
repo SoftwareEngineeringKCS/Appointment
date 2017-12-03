@@ -46,6 +46,13 @@
 	include ('includes/header.html');
 	include ('includes/db_config.php');
 
+	echo "<div class='menu_help' id='help' style='display: none;'>";
+	echo "<p><b>Staff:</b><br>Administrators can set-up availability periods, maanage appointments, and view statistics. Administrators must login in order to use these features.</p>";
+	echo "<p><b>Appointments:</b><br>Students can book appointments and update personal information from previous meetings.</p>";
+	echo "<p><b>Check-In:</b><br>Let the office know that you are waiting for counseling. There are two options: (1) By-Appointment, you will need your student id and a confirmation code which was sent to you by email. (2) Walk-In, no appointment is needed (longer waiting time).</p>";
+	echo "<center><p><< CLICK HELP TO CLOSE >></p></center>";
+	echo "</div>";
+	
 	// Check for form submission:
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		echo "<div id='appointment_result' style='display: block;'>";
@@ -293,10 +300,19 @@
 	}
 
 ?>
-<script>
-	/*function testing() {
 
-	}*/
+<script type="text/javascript">
+	function showHelp() {
+	    var x = document.getElementById("help");
+	    if (x.style.display === "none") {
+	        x.style.display = "block";
+	    } else {
+	        x.style.display = "none";
+	    }
+	}
+</script>
+
+<script>
 	function confirmBooking() {
 		//
 		var x = document.getElementById("appointment_result");
