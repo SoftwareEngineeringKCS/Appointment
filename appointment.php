@@ -65,13 +65,15 @@
 				$_POST['student_id'] == '' || $_POST['first_name'] == '' || $_POST['last_name'] == '' || 
 				$_POST['email'] == '') {
 				echo "<h2>The following fields cannot be empty!</h2>";
-				if ($_POST['reason'] == '') echo "<p class='error'>\"Reason\"</p>";
-				if ($_POST['student_id'] == '') echo "<p class='error'>\"ID\"</p>";
-				if ($_POST['first_name'] == '') echo "<p class='error'>\"First Name\"</p>";
-				if ($_POST['last_name'] == '') echo "<p class='error'>\"Last Name\"</p>";
-				if ($_POST['email'] == '') echo "<p class='error'>\"E-mail\"</p>";
-				if ($_POST['consultant'] == '') echo "<p class='error'>\"Consultant\"</p>";
-				if ($_POST['location'] == '') echo "<p class='error'>\"Location\"</p>";
+				echo "<p class='error'>";
+				if ($_POST['reason'] == '') echo "\"Reason\", ";
+				if ($_POST['student_id'] == '') echo "\"ID\", ";
+				if ($_POST['first_name'] == '') echo "\"First Name\", ";
+				if ($_POST['last_name'] == '') echo "\"Last Name\", ";
+				if ($_POST['email'] == '') echo "\"E-mail\", ";
+				if ($_POST['consultant'] == '') echo "\"Consultant\", ";
+				if ($_POST['location'] == '') echo "\"Location\"";
+				echo "</p>";
 				echo "<p><a href='appointment.php'>TRY AGAIN</a></p>";
 			} else {
 				# Validate Id and Email.
