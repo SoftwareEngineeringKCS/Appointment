@@ -65,7 +65,8 @@
 
 			if ($_POST['location'] == '' || $_POST['consultant'] == '' || $_POST['reason'] == '' || 
 				$_POST['student_id'] == '' || $_POST['first_name'] == '' || $_POST['last_name'] == '' || 
-				$_POST['email'] == '') {
+				$_POST['email'] == '' || $_POST['state'] == '' || $_POST['zipcode'] == '' || $_POST['major'] == '' || $_POST['education'] == '' || $_POST['ethnic_racial'] == '' || 
+				$_POST['gender'] == '') {
 				echo "<h2>The following fields cannot be empty!</h2>";
 				echo "<p class='error'>";
 				if ($_POST['reason'] == '') echo "\"Reason\", ";
@@ -74,10 +75,13 @@
 				if ($_POST['last_name'] == '') echo "\"Last Name\", ";
 				if ($_POST['email'] == '') echo "\"E-mail\", ";
 				if ($_POST['consultant'] == '') echo "\"Consultant\", ";
-				if ($_POST['location'] == '') echo "\"Location\"";
-				# ADD THE REST
-
-
+				if ($_POST['location'] == '') echo "\"Location\", ";
+				if ($_POST['state'] == '') echo "\"State\", ";
+				if ($_POST['zipcode'] == '') echo "\"Zipcode\", ";
+				if ($_POST['major'] == '') echo "\"Major\", ";
+				if ($_POST['education'] == '') echo "\"Education (year)\", ";
+				if ($_POST['ethnic_racial'] == '') echo "\"Race/Ethnicity\", ";
+				if ($_POST['gender'] == '') echo "\"Gender\"";
 				echo "</p>";
 				echo "<p><button type='button' style='height: 30px;' onclick='mainDisplay(this)'>BACK</button></p>";
 			} else {
@@ -451,6 +455,8 @@
 											}	
 										}
 									}
+
+									mysqli_free_result($res2);
 								} else {
 									echo "<p class='error'>Email Validation... Failed! [Connection Error]";
 									if ($show_error) {
@@ -579,7 +585,7 @@
 	<h1>Appointment Process</h1>
 	<form action="appointment.php" method="post">	
 		<div id="gatherStudentData" style="display: block; width: 100%;">
-			<h2>Student Information | * Required Fields  <button type='button' style='font-size:0.9em; height: 30px;' onclick='doStep()'>NEXT</button></h2>
+			<h2>(1) Student Information | * Required Fields  <button type='button' style='font-size:0.9em; height: 30px;' onclick='doStep()'>NEXT</button></h2>
 			<table style="width: 550px">
 				<tr>
 					<td style="vertical-align: top; padding: 0 0 0 10px; border: 0px;">
@@ -786,7 +792,7 @@
 			</table>
 		</div>
 		<div id="chooseTime" style="display: none; width: 100%;">
-			<h2>Select consultant and book a time! <span class='btntitle' style="font-size: 0.8em">ALERT: If booking does not respond, click "BACK" to check "Required Fields."</span></h2>
+			<h2>(2) Select consultant and book a time! <span class='btntitle' style="font-size: 0.8em">ALERT: If booking does not respond, click "BACK" to check "Required Fields."</span></h2>
 			<p>
 				<?php 
 
@@ -819,7 +825,6 @@
 
 					echo "   <button type='button' style='font-size:1.1em; height: 30px;' onclick='doStep()'>BACK</button>";
 					
-
 					mysqli_close($conex);
 
 				?>
