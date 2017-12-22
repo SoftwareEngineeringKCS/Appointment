@@ -792,8 +792,7 @@
 			</table>
 		</div>
 		<div id="chooseTime" style="display: none; width: 100%;">
-			<h2>(2) Select consultant and book a time! <span class='btntitle' style="font-size: 0.8em">ALERT: If booking does not respond, click "BACK" to check "Required Fields."</span></h2>
-			<p>
+			<h2>(2) Select *Consultant and book a time! | 
 				<?php 
 
 					#CONSULTANTS.
@@ -801,8 +800,8 @@
 					$cons_res = mysqli_query($conex, $query);
 					if ($cons_res) {
 						if (mysqli_num_rows($cons_res) > 0) {
-							echo " * Consultant: ";
-							echo "<select id='consultant' name='consultant' required='required' style='width: 200px' onchange='return populateBook(this);'>";
+							//echo " * Consultant: ";
+							echo "<select id='consultant' name='consultant' required='required' style='font-size: 0.9em; width: 220px' onchange='return populateBook(this);'>";
 								echo "<option value=''>#Select</option>\n";
 								while ($row = mysqli_fetch_array($cons_res)) {
 									$con_id = $row['id'];
@@ -823,12 +822,13 @@
 						echo "[Connection Error]";
 					}
 
-					echo "   <button type='button' style='font-size:1.1em; height: 30px;' onclick='doStep()'>BACK</button>";
+					echo "   <button type='button' style='font-size:0.9em; height: 30px;' onclick='doStep()'>BACK</button>";
 					
 					mysqli_close($conex);
 
 				?>
-			</p>
+			</h2><br>
+			<span class='btnbook' style="font-size: 1.3em">ALERT :  If booking does not respond, click "BACK" to check "Required Fields."</span>
 			<div id="populate_book" style="width: 100%; text-align: left; padding: 0 0 0 30px;"><br><br><br><center><div class='no_availability'><div>No Availability</div></div></center></div>
 			<script>
 				function populateBook(sel) {
