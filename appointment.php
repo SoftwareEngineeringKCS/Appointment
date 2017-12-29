@@ -1,9 +1,9 @@
 <?php #JORGE ESPADA
 	
 	function sendEmail($from, $to, $confirmation) {
-		 $subject = "TESTING - Appointment Confirmation Code";
+		 $subject = "Appointment Confirmation Code";
 		 $header = "From: " . $from;
-		 $message = "Dear Student, #THIS IS ONLY A TEST#
+		 $message = "Dear Student,
 		 		 	\nYour appointment confirmation code is " . $confirmation . ". 
 		 		 	\nBest regards,
 		 		 	\nKean Career Services";
